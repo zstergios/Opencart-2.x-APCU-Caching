@@ -20,6 +20,7 @@ class APCU
 		{
 			exit('APCu is not installed on your webserver. Please request your WebHosting provider to install it or switch caching handler');
 		}
+		if(!defined('CACHE_PREFIX')) define('CACHE_PREFIX',HTTP_SERVER);
 		$this->expire = $expire;
 	}
 
