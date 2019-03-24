@@ -11,7 +11,7 @@
 namespace Cache;
 class APCU
 {
-	private $expire=3600;
+	private $expire=1800;
 	private $cache;
 
 	public function __construct($expire)
@@ -38,5 +38,10 @@ class APCU
 	public function delete($key)
 	{
 		apcu_delete(CACHE_PREFIX . $key);
+	}
+	
+	public function setExpire($expire)
+	{
+		$this->expire = $expire;
 	}
 }
