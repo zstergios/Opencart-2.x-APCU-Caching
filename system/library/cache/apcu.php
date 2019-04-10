@@ -1,7 +1,7 @@
 <?php
 /**
  * @package		APCu Caching Opencart v2.x
- * @version     1.0
+ * @version     1.3
  * @author      Stergios Zgouletas <info@web-expert.gr>
  * @link        http://www.web-expert.gr
  * @copyright   Copyright (C) 2010 Web-Expert.gr All Rights Reserved
@@ -31,8 +31,7 @@ class APCU
 
 	public function set($key, $value)
 	{
-		$this->delete($key);
-		return apcu_add(CACHE_PREFIX . $key, $value, $this->expire);
+		return apcu_store(CACHE_PREFIX . $key, $value, $this->expire);
 	}
 
 	public function delete($key)
