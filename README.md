@@ -16,16 +16,17 @@ $cache = new Cache('apcu');
 
 version >= 2.2.0
 Edit the /system/config/default.php, find
-`
-// Cache
+
+`// Cache
 $_['cache_type']           = 'file'; // apc, file or mem
 $_['cache_expire']         = 3600;
 `
 
+
 change it to
 
-`
-// Cache
+
+`// Cache
 $_['cache_type']           = 'apcu'; // apc, file or mem
 $_['cache_expire']         = 3600;
 `
