@@ -8,17 +8,21 @@
     <operation>
       <search position="after"><![CDATA[function index() {]]></search>
       <add><![CDATA[
-       
-	   //$this->response->addHeader('Caching-Opencart: Web-expert.gr VQMOD');
+	    $this->response->addHeader('Caching-Opencart: Web-expert.gr VQMOD');
 		$uri=isset($_SERVER['REQUEST_URI'])?$_SERVER['REQUEST_URI']:$_SERVER['SCRIPT_NAME'];
 		if($_SERVER['REQUEST_METHOD']=='POST' || $this->cart->hasProducts() || $this->customer->isLogged() || strpos($uri,'account')!==false || strpos($uri,'checkout')!==false || strpos($uri,'wishlist')!==false)
 		{
 			$this->response->addHeader('Cache-Control: private');
+		    $this->response->addHeader('Expires: Mon, 01 Jan 2019 00:00:00 GMT');
+			$this->response->addHeader('Pragma: no-cache');
 			$this->response->addHeader('X-Logged-In: True');
 		}
 		else
 		{
-			$this->response->addHeader('Cache-Control: public');
+		    $cacheTime=5; //seconds
+		    $this->response->addHeader('Cache-Control: public, max-age='.$cacheTime.', pre-check='.$cacheTime.', post-check='.$cacheTime.', stale-while-revalidate='.($cacheTime*2).', stale-if-error='.($cacheTime*3));
+		    $this->response->addHeader('Expires: '.gmdate('D, d M Y H:i:s', time()+$cacheTime).' GMT');
+		    $this->response->addHeader('Pragma: public');
 			$this->response->addHeader('X-Logged-In: False');
 		}
         ]]></add>
