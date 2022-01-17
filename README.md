@@ -17,7 +17,7 @@ version >= 2.2.0  <br/>
 Edit the /system/config/default.php, find  <br/>
 
 `
-$_['cache_type']           = 'file'; // apc, file or mem  \n
+$_['cache_type']           = 'file'; // apc, file or mem
 `
 `
 $_['cache_expire']         = 3600;
@@ -26,7 +26,7 @@ $_['cache_expire']         = 3600;
 change it to  
 
 `
-$_['cache_type']           = 'apcu'; // apc, file or mem  \n
+$_['cache_type']           = 'apcu'; // apc, file or mem 
 `
 `
 $_['cache_expire']         = 3600;
